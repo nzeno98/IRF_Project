@@ -13,7 +13,7 @@ namespace IRF_beadando
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
         {
             GraphicsPath path = new GraphicsPath();
-            path.AddEllipse(0, 0, ClientSize.Width, ClientSize.Height);
+            path.AddEllipse(3, 3, ClientSize.Width-8, ClientSize.Height-8);
             this.Region = new System.Drawing.Region(path);
             base.OnPaint(e);
         }

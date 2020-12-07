@@ -40,5 +40,15 @@ namespace IRF_beadando
             };
 
         }
+
+        private void roundButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
