@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using IRF_beadando.Entities;
 using System.IO;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace IRF_beadando
 {
@@ -40,6 +41,26 @@ namespace IRF_beadando
                 }
 
             };
+
+        }
+
+        void diagram()
+        {
+            dataGridView1.DataSource = valasztottnapok;
+            chart1.DataSource = valasztottnapok;
+            var series = chart1.Series[0];
+            series.ChartType = SeriesChartType.Line;
+            series.XValueMember = "nap";
+            series.YValueMembers = "napibeteg";
+            series.BorderWidth = 2;
+
+            var legend = chart1.Legends[0];
+            legend.Enabled = false;
+
+            var chartArea = chart1.ChartAreas[0];
+            chartArea.AxisX.MajorGrid.Enabled = false;
+            chartArea.AxisY.MajorGrid.Enabled = false;
+            chartArea.AxisY.IsStartedFromZero = false;
 
         }
 
@@ -78,6 +99,7 @@ namespace IRF_beadando
             idointervallum.kezdo = dateTimePicker1.Value;
             idointervallum.vege = idointervallum.kezdo.AddMonths(1);
             datummegadas();
+            diagram();
         }
     }
 }
