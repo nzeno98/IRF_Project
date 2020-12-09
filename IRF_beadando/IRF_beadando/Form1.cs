@@ -15,6 +15,7 @@ namespace IRF_beadando
     public partial class Form1 : Form
     {
         List<koronasnap> koronasnapok = new List<koronasnap>();
+        List<koronasnap> valasztottnapok = new List<koronasnap>(); 
         public Form1()
         {
             InitializeComponent();
@@ -34,12 +35,28 @@ namespace IRF_beadando
                     k.napihalott = Convert.ToInt32(adatok[2]);
                     k.osszes = Convert.ToInt32(adatok[3]);
                     koronasnapok.Add(k);
+                    
 
                 }
 
             };
 
         }
+
+        void datummegadas()
+        {
+            valasztottnapok.Clear();
+            foreach (var nap in koronasnapok)
+            {
+              if(nap.nap>=idointervallum.kezdo && nap.nap<=idointervallum.vege)
+                {
+                    valasztottnapok.Add(nap);
+                }
+
+            }
+
+        }
+
 
         private void roundButton1_Click(object sender, EventArgs e)
         {
@@ -48,7 +65,19 @@ namespace IRF_beadando
 
         private void label1_Click(object sender, EventArgs e)
         {
+            //nem akartam használni semmire, véletlen került ide
+        }
 
+        private void roundButton2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            idointervallum.kezdo = dateTimePicker1.Value;
+            idointervallum.vege = idointervallum.kezdo.AddMonths(1);
+            datummegadas();
         }
     }
 }
