@@ -53,6 +53,7 @@ namespace IRF_beadando
             series.XValueMember = "nap";
             series.YValueMembers = "napibeteg";
             series.BorderWidth = 2;
+            series.Color = Color.Blue;
 
             var legend = chart1.Legends[0];
             legend.Enabled = false;
