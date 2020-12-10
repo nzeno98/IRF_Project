@@ -60,12 +60,18 @@ namespace IRF_beadando
             {
                 series.YValueMembers = "napibeteg";
                 series.Color = Color.Blue;
+                dataGridView1.Columns["napibeteg"].Visible = true;
+                dataGridView1.Columns["napihalott"].Visible = false;
+                dataGridView1.Columns["osszes"].Visible = false;
             }
             else
                 if(diagramtipus==2)
             {
                 series.YValueMembers = "napihalott";
                 series.Color = Color.Black;
+                dataGridView1.Columns["napibeteg"].Visible = false;
+                dataGridView1.Columns["napihalott"].Visible = true;
+                dataGridView1.Columns["osszes"].Visible = false;
             }
             else
                 if(diagramtipus==3)
@@ -73,6 +79,10 @@ namespace IRF_beadando
                 chart1.DataSource = koronasnapok;
                 series.YValueMembers = "osszes";
                 series.Color = Color.Red;
+                dataGridView1.DataSource = koronasnapok;
+                dataGridView1.Columns["napibeteg"].Visible = false;
+                dataGridView1.Columns["napihalott"].Visible = false;
+                dataGridView1.Columns["osszes"].Visible = true;
             }
 
                
