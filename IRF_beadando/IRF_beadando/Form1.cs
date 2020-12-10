@@ -16,11 +16,13 @@ namespace IRF_beadando
     public partial class Form1 : Form
     {
         List<koronasnap> koronasnapok = new List<koronasnap>();
-        List<koronasnap> valasztottnapok = new List<koronasnap>(); 
+        List<koronasnap> valasztottnapok = new List<koronasnap>();
+        int diagramtipus = 1;
         public Form1()
         {
             InitializeComponent();
             beolvasas();
+            dateTimePicker1.Value = Convert.ToDateTime("2020.11.01");
         }
 
         void beolvasas()
@@ -51,9 +53,29 @@ namespace IRF_beadando
             var series = chart1.Series[0];
             series.ChartType = SeriesChartType.Line;
             series.XValueMember = "nap";
-            series.YValueMembers = "napibeteg";
             series.BorderWidth = 2;
-            series.Color = Color.Blue;
+            
+
+            if (diagramtipus == 1)
+            {
+                series.YValueMembers = "napibeteg";
+                series.Color = Color.Blue;
+            }
+            else
+                if(diagramtipus==2)
+            {
+                series.YValueMembers = "napihalott";
+                series.Color = Color.Black;
+            }
+            else
+                if(diagramtipus==3)
+            {
+                chart1.DataSource = koronasnapok;
+                series.YValueMembers = "osszes";
+                series.Color = Color.Red;
+            }
+
+               
 
             var legend = chart1.Legends[0];
             legend.Enabled = false;
@@ -63,6 +85,34 @@ namespace IRF_beadando
             chartArea.AxisY.MajorGrid.Enabled = false;
             chartArea.AxisY.IsStartedFromZero = false;
 
+        }
+
+        void diagramchangeforward()
+        {
+            if(diagramtipus<3)
+            {
+                diagramtipus++;
+            }
+            else
+            {
+                diagramtipus = 1;
+            }
+            label1.Text = diagramtipus.ToString();
+            diagram();
+        }
+
+        void diagramchangeback()
+        {
+            if (diagramtipus > 1)
+            {
+                diagramtipus--;
+            }
+            else
+            {
+                diagramtipus = 3;
+            }
+            label1.Text = diagramtipus.ToString();
+            diagram();
         }
 
         void datummegadas()
@@ -82,7 +132,7 @@ namespace IRF_beadando
 
         private void roundButton1_Click(object sender, EventArgs e)
         {
-
+            diagramchangeforward();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -92,7 +142,7 @@ namespace IRF_beadando
 
         private void roundButton2_Click(object sender, EventArgs e)
         {
-
+            diagramchangeback();
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
