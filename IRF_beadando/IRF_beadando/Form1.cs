@@ -22,34 +22,68 @@ namespace IRF_beadando
         {
             InitializeComponent();
             beolvasas();
-            dateTimePicker1.Value = Convert.ToDateTime("2020.11.01");
+            datumkorlat();
+           
         }
 
         void beolvasas()
         {
-            using (StreamReader sr = new StreamReader("korona.csv"))
+            try
             {
-                while(!sr.EndOfStream)
+                using (StreamReader sr = new StreamReader("korona.csv"))
                 {
-                    string[] adatok = sr.ReadLine().Split(';');
-                    koronasnap k = new koronasnap();
-                    k.nap = Convert.ToDateTime(adatok[0]);
-                    k.napibeteg = Convert.ToInt32(adatok[1]);
-                    k.napihalott = Convert.ToInt32(adatok[2]);
-                    k.osszes = Convert.ToInt32(adatok[3]);
-                    koronasnapok.Add(k);
-                    
+                    while (!sr.EndOfStream)
+                    {
+                        string[] adatok = sr.ReadLine().Split(';');
+                        koronasnap k = new koronasnap();
+                        k.nap = Convert.ToDateTime(adatok[0]);
+                        k.napibeteg = Convert.ToInt32(adatok[1]);
+                        k.napihalott = Convert.ToInt32(adatok[2]);
+                        k.osszes = Convert.ToInt32(adatok[3]);
+                        k.Sulyossag = Convert.ToInt32(adatok[1]);
+                        koronasnapok.Add(k);
 
-                }
 
-            };
+                    }
 
+                };
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Probléma a fájl beolvasásakor. Kérlek próbáld újra!");
+            }
+           
+           
+
+        }
+
+        void datumkorlat()
+        {
+            DateTime minimum = Convert.ToDateTime("2050.01.01");
+            DateTime maximum = Convert.ToDateTime("2000.01.01");
+
+
+
+            foreach (var x in koronasnapok)
+            {
+                if (x.nap > maximum) maximum = x.nap;
+                if (x.nap < minimum) minimum = x.nap;
+            }
+            dateTimePicker1.MaxDate = maximum.Date.AddMonths(-1);
+            dateTimePicker1.MinDate = minimum.Date;
+            dateTimePicker1.Value = Convert.ToDateTime("2020.11.01");
         }
 
         void diagram()
         {
             dataGridView1.DataSource = valasztottnapok;
             chart1.DataSource = valasztottnapok;
+            dataGridView1.Columns[0].HeaderText = "Dátum";
+            dataGridView1.Columns[1].HeaderText = "Napi fert.";
+            dataGridView1.Columns[2].HeaderText = "Halálesetek";
+            dataGridView1.Columns[3].HeaderText = "Összes fert.";
+            dataGridView1.Columns[4].HeaderText = "Terjedés";
             var series = chart1.Series[0];
             series.ChartType = SeriesChartType.Line;
             series.XValueMember = "nap";
@@ -63,6 +97,10 @@ namespace IRF_beadando
                 dataGridView1.Columns["napibeteg"].Visible = true;
                 dataGridView1.Columns["napihalott"].Visible = false;
                 dataGridView1.Columns["osszes"].Visible = false;
+                dataGridView1.Columns["Sulyossag"].Visible = true;
+                dataGridView1.Refresh();
+                dateTimePicker1.Enabled = true;
+                label7.Text = "Napi fertőzöttek száma";                
             }
             else
                 if(diagramtipus==2)
@@ -72,6 +110,10 @@ namespace IRF_beadando
                 dataGridView1.Columns["napibeteg"].Visible = false;
                 dataGridView1.Columns["napihalott"].Visible = true;
                 dataGridView1.Columns["osszes"].Visible = false;
+                dataGridView1.Columns["Sulyossag"].Visible = false;
+                dataGridView1.Refresh();
+                dateTimePicker1.Enabled = true;
+                label7.Text = "Napi halálesetek száma";
             }
             else
                 if(diagramtipus==3)
@@ -83,6 +125,9 @@ namespace IRF_beadando
                 dataGridView1.Columns["napibeteg"].Visible = false;
                 dataGridView1.Columns["napihalott"].Visible = false;
                 dataGridView1.Columns["osszes"].Visible = true;
+                dataGridView1.Columns["Sulyossag"].Visible = true;
+                dateTimePicker1.Enabled = false;
+                label7.Text = "Teljes járványgörbe";
             }
 
                
@@ -157,10 +202,24 @@ namespace IRF_beadando
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            idointervallum.kezdo = dateTimePicker1.Value;
-            idointervallum.vege = idointervallum.kezdo.AddMonths(1);
-            datummegadas();
-            diagram();
+            try
+            {
+                idointervallum.kezdo = dateTimePicker1.Value;
+                idointervallum.vege = idointervallum.kezdo.AddMonths(1);
+                datummegadas();
+                diagram();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Hiba! Kérlek próbáld újra!");
+            }
+            
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            //véletlenül került ide
         }
     }
 }
