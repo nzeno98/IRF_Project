@@ -41,6 +41,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.roundButton2 = new IRF_beadando.RoundButton();
             this.roundButton1 = new IRF_beadando.RoundButton();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -53,7 +54,7 @@
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(317, 70);
+            this.chart1.Location = new System.Drawing.Point(472, 70);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
@@ -66,7 +67,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(647, 25);
+            this.label1.Location = new System.Drawing.Point(836, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(13, 13);
             this.label1.TabIndex = 3;
@@ -76,7 +77,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(657, 25);
+            this.label2.Location = new System.Drawing.Point(846, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(21, 13);
             this.label2.TabIndex = 4;
@@ -84,7 +85,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(82, 70);
+            this.dateTimePicker1.Location = new System.Drawing.Point(86, 64);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 5;
@@ -93,7 +94,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 70);
+            this.label3.Location = new System.Drawing.Point(15, 70);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 7;
@@ -103,18 +104,18 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.Location = new System.Drawing.Point(3, 25);
+            this.label5.Location = new System.Drawing.Point(15, 25);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(308, 13);
+            this.label5.Size = new System.Drawing.Size(310, 13);
             this.label5.TabIndex = 10;
-            this.label5.Text = "Kérlek add meg az egy hónapos intervallum kezdését";
+            this.label5.Text = "Kérlek add meg az egy hónapos intervallum kezdetét!";
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(18, 138);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(264, 282);
+            this.dataGridView1.Size = new System.Drawing.Size(359, 282);
             this.dataGridView1.TabIndex = 11;
             // 
             // label4
@@ -138,7 +139,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(603, 54);
+            this.label7.Location = new System.Drawing.Point(814, 49);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(35, 13);
             this.label7.TabIndex = 14;
@@ -146,11 +147,21 @@
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(18, 502);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "Kilépés";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // roundButton2
             // 
             this.roundButton2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.roundButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.roundButton2.Location = new System.Drawing.Point(317, 12);
+            this.roundButton2.Location = new System.Drawing.Point(472, 12);
             this.roundButton2.Name = "roundButton2";
             this.roundButton2.Size = new System.Drawing.Size(50, 50);
             this.roundButton2.TabIndex = 2;
@@ -162,7 +173,7 @@
             // 
             this.roundButton1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.roundButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.roundButton1.Location = new System.Drawing.Point(912, 12);
+            this.roundButton1.Location = new System.Drawing.Point(1067, 12);
             this.roundButton1.Name = "roundButton1";
             this.roundButton1.Size = new System.Drawing.Size(50, 50);
             this.roundButton1.TabIndex = 1;
@@ -174,7 +185,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(974, 537);
+            this.ClientSize = new System.Drawing.Size(1129, 537);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
@@ -187,6 +199,7 @@
             this.Controls.Add(this.roundButton2);
             this.Controls.Add(this.roundButton1);
             this.Controls.Add(this.chart1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
@@ -210,6 +223,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button1;
     }
 }
 

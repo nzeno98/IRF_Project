@@ -47,9 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\dialabel.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Entities\idointervallum.cs" />
     <Compile Include="Entities\koronasnap.cs" />
     <Compile Include="Form1.cs">

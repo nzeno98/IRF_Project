@@ -15,6 +15,7 @@ namespace IRF_beadando
 {
     public partial class Form1 : Form
     {
+        
         List<koronasnap> koronasnapok = new List<koronasnap>();
         List<koronasnap> valasztottnapok = new List<koronasnap>();
         int diagramtipus = 1;
@@ -23,6 +24,7 @@ namespace IRF_beadando
             InitializeComponent();
             beolvasas();
             datumkorlat();
+           
            
         }
 
@@ -110,7 +112,7 @@ namespace IRF_beadando
                 dataGridView1.Columns["napibeteg"].Visible = false;
                 dataGridView1.Columns["napihalott"].Visible = true;
                 dataGridView1.Columns["osszes"].Visible = false;
-                dataGridView1.Columns["Sulyossag"].Visible = false;
+                dataGridView1.Columns["Sulyossag"].Visible = true;
                 dataGridView1.Refresh();
                 dateTimePicker1.Enabled = true;
                 label7.Text = "Napi halálesetek száma";
@@ -220,6 +222,11 @@ namespace IRF_beadando
         private void label7_Click(object sender, EventArgs e)
         {
             //véletlenül került ide
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
